@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>דירות אירוח פישמן</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to top left, #f3f3f3, #e0e0e0);
+      color: #333;
+    }
+
+    header {
+      background-color: #2c3e50;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+      font-size: 2.4em;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    .intro {
+      max-width: 800px;
+      margin: 40px auto 20px;
+      padding: 0 20px;
+      font-size: 1.2em;
+      text-align: center;
+      color: #555;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      margin: 30px 0;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .buttons button {
+      padding: 15px 30px;
+      font-size: 1.2em;
+      background: #34495e;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .buttons button:hover {
+      background-color: #1abc9c;
+      transform: scale(1.05);
+    }
+
+    .section {
+      display: none;
+      animation: fadeIn 0.8s ease-in-out forwards;
+    }
+
+    .active {
+      display: block;
+    }
+
+    .description {
+      max-width: 800px;
+      margin: 0 auto 20px;
+      padding: 0 20px;
+      font-size: 1.1em;
+      line-height: 1.7;
+      color: #444;
+      text-align: center;
+    }
+
+    .slider {
+      position: relative;
+      max-width: 700px;
+      margin: 0 auto 50px;
+      text-align: center;
+    }
+
+    .slider img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    .arrow {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2em;
+      color: #fff;
+      background-color: rgba(0,0,0,0.4);
+      padding: 10px;
+      border-radius: 50%;
+      user-select: none;
+      transition: background 0.3s;
+    }
+
+    .arrow:hover {
+      background-color: rgba(0,0,0,0.7);
+    }
+
+    .arrow.right {
+      right: 10px;
+    }
+
+    .arrow.left {
+      left: 10px;
+    }
+
+    footer {
+      text-align: center;
+      margin: 60px 0 30px;
+      font-size: 1.1em;
+      color: #555;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    דירות אירוח פישמן
+  </header>
+
+  <div class="intro">
+    בחרו את המתחם שמתאים לכם:  
+    <strong>מתחם למשפחות/קבוצות</strong> או <strong>מתחם לזוגות/משפחות קטנות</strong>.  
+    לאחר הבחירה, יוצגו תמונות ותיאור מפורט של הדירות.
+  </div>
+
+  <div class="buttons">
+    <button onclick="showSection('area1')">מתחם המשפחות והקבוצות</button>
+    <button onclick="showSection('area2')">מתחם הזוגות והמשפחות הקטנות</button>
+  </div>
+
+  <div id="area1" class="section">
+    <div class="description">
+      <h2>מתחם המשפחות והקבוצות</h2>
+      <p>
+        5 דירות אירוח , בכל דירה: 8 מיטות, פינת אוכל משפחתית, מטבח, שירותים ומקלחת.  
+        <br>
+        במתחם: גינה ענקית עם דשא ירוק, נדנדות לילדים, וסככות רשת צל לאירוח מפנק באוויר הצח של מירון.
+      </p>
+    </div>
+    <div class="slider">
+      <span class="arrow left" onclick="prevSlide('slider1')">&#10094;</span>
+      <img id="slider1" src="https://i.ibb.co/cKbKjKC1/1.jpg" alt="מתחם 1">
+      <span class="arrow right" onclick="nextSlide('slider1')">&#10095;</span>
+    </div>
+  </div>
+
+  <div id="area2" class="section">
+    <div class="description">
+      <h2>מתחם הזוגות והמשפחות הקטנות</h2>
+      <p>
+        דירות אירוח לזוגות או משפחות של 3 עד 5 נפשות.  
+        <br>
+        אווירה מדהימה ושירות חם ומסור שיגרום לכם לרצות לחזור שוב.
+      </p>
+    </div>
+    <div class="slider">
+      <span class="arrow left" onclick="prevSlide('slider2')">&#10094;</span>
+      <img id="slider2" src="https://i.ibb.co/FL7P7vVN/20180611-181534.jpg">
+      <span class="arrow right" onclick="nextSlide('slider2')">&#10095;</span>
+    </div>
+  </div>
+
+  <footer>
+    <span style="color: green;">📞</span> 052-281-5211 | ✉️ mendyf862@gmail.com
+  </footer>
+
+  <script>
+    const images = {
+      slider1: [
+        "https://i.ibb.co/cKbKjKC1/1.jpg",
+        "https://i.ibb.co/qF1LQ0XP/2.jpg",
+        "https://i.ibb.co/MxzLg3nf/3.jpg",
+	"https://i.ibb.co/dJ0BxSrq/20180603-130208.jpg",
+	"https://i.ibb.co/pjsfCMnj/20180603-130218.jpg",
+	"https://i.ibb.co/f3q7ZPh/20180603-130229.jpg",
+	"https://i.ibb.co/xSnTZ6yB/20180603-130239.jpg",
+	"https://i.ibb.co/SwT3ksXm/20180603-130259.jpg"
+      ],
+      slider2: [
+        "https://i.ibb.co/FL7P7vVN/20180611-181534.jpg",
+        "https://i.ibb.co/YB0yHBd4/20180611-181553.jpg",
+        "https://i.ibb.co/84SX3H9L/20180611-181627.jpg",
+	"https://i.ibb.co/sp3m3Ctm/20180611-181638.jpg",
+	"https://i.ibb.co/mCd3qzKY/20180611-181645.jpg",
+	"https://i.ibb.co/pBBWQD4v/20180611-181830.jpg",
+	"https://i.ibb.co/pBjGGb4Y/20180611-181839.jpg",
+	"https://i.ibb.co/Mx9r3gtc/20180611-181846.jpg",
+	"https://i.ibb.co/CXTfKBf/20180611-181853.jpg",
+	"https://i.ibb.co/9HNLQ8zM/20180611-181924.jpg",
+	"https://i.ibb.co/Q3GJ48Jz/20180611-182006.jpg",
+	"https://i.ibb.co/vvMThMkC/20180611-182016.jpg",
+	"https://i.ibb.co/67pZmQKb/20180611-181516.jpg"
+      ]
+    };
+
+    const indices = { slider1: 0, slider2: 0 };
+
+    function showSection(id) {
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function nextSlide(id) {
+      indices[id] = (indices[id] + 1) % images[id].length;
+      document.getElementById(id).src = images[id][indices[id]];
+    }
+
+    function prevSlide(id) {
+      indices[id] = (indices[id] - 1 + images[id].length) % images[id].length;
+      document.getElementById(id).src = images[id][indices[id]];
+    }
+  </script>
+
+</body>
+</html>
